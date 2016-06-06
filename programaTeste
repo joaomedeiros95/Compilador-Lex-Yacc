@@ -1,0 +1,257 @@
+#Programas a Implementar para Avaliação:
+#
+#(1) Apenas programas escritos na linguagem do grupo e traduzidos por seu compilador para C reduzido serão aceitos.
+#
+#(2) Programas não-recursivos (implementar antes da avaliação):
+#  (A) Leitura de valores (envolvendo tipos distintos), avaliação de expressões, atribuições e escrita em tela.
+#  (B) Busca de um elemento k em um vetor contendo n elementos.
+#  (C) Leitura de duas matrizes A e B, cálculo e impressão da matriz C = A * B.
+#  (D) Criação e uso de módulos para cálculo das operações aritméticas (binárias) elementares.
+#
+#(3) Programas recursivos (implementar antes da avaliação):
+#  (A) Fatorial.
+#  (B) Fibonacci.
+
+void programaNRA(){
+	int A;
+	char B;
+	int C;
+	string D;
+	float E;
+	
+	print("Digite um número: ");
+	read(A);
+	print("Digite outro número: ");
+	read(C);
+	print("Digite um número decimal: ");
+	read(E);
+	print("Digite uma letra: ");
+	read(B);
+	print("Digite uma frase: ");
+	read(D);
+	
+	int testeSomaIntFloat = A + E;
+	print("soma num1 + num3 : ");
+	print(testeSomaIntFloat);print("\n");
+	
+	int teste = A + C;
+	
+	print("soma num1 + num2 : ");
+	print(teste);print("\n");
+	
+	if(A < C){
+		print("num1 < num2");print("\n");
+	}
+	if(A > C){
+		print("num1 > num2");print("\n");
+	}
+	
+	int teste2 = A % 3;
+	int teste3 = C % 3;
+	int teste4 = teste % 3;
+	print("Num1 %% 3 :");print(teste2);print("\n");
+	print("Num2 %% 3 :");print(teste3);print("\n");
+	print("num1 + num2 %% 3 :");print(teste4);print("\n");
+	
+	print("char: ");
+	print(B);
+	print("\n");
+	
+	print("string: ");
+	print(D);
+	print("\n");
+	
+}
+
+int programaNRB(int k){
+	int n = 5;
+	int V[5];
+	int j;
+	
+	for(j = 0;j < n;j++){
+		int l;
+		read(l);
+		V[j] = l;
+	}
+	
+	int i;
+	
+	for(i = 0;i < n;i++){
+		if(V[i] == k){
+			return 1;
+		}
+	}
+	
+	return 0;
+}
+
+void programaNRC(){
+	int linha;
+	int coluna;
+	int i;
+	int somaprod;
+	int leitura;
+	int teste2;
+	int M1L=2;
+	int M1C=2;
+	int M2L=2;
+	int M2C=2;
+	int mat1[M1L][M1C];
+	int mat2[M2L][M2C];
+	int mat3[M1L][M1C];
+	int a;
+	int b;
+	
+	print("Matriz 1");print("\n");
+	print("Digite os números da matriz 1: ");print("\n");
+	for(a = 0;a < M1L;a++){
+		for(b = 0;b < M1C;b++){
+			read(leitura);
+			mat1[a][b] = leitura;
+		}
+	}
+	
+	print("Matriz 2");print("\n");
+	print("Digite os números da matriz 2: ");print("\n");
+	for(a = 0;a < M2L;a++){
+		for(b = 0;b < M2C;b++){
+			read(leitura);
+			mat2[a][b] = leitura;
+		}
+	}
+	print("\n\n");
+	
+	for(linha=0; linha<M1L; linha++) {
+	  for(coluna=0; coluna<M2C; coluna++){ 
+	    somaprod=0; 
+	    for(i=0; i<M1L; i++) {
+	    	somaprod = somaprod + mat1[linha][i] * mat2[i][coluna]; 
+	    }
+	    mat3[linha][coluna] = somaprod; 
+	  }
+	}
+	
+	#imprime mat3 
+	for(linha=0; linha<M1L; linha++){ 
+	  for(coluna=0; coluna<M2C; coluna++) {
+	    	print(" ");print(mat3[linha][coluna]);
+		}
+		print("\n"); 
+	}
+}
+
+int soma(int a, int b){
+	return a + b;
+}
+
+int sub(int a, int b){
+	return a - b;
+}
+
+int mult(int a, int b){
+	return a * b;
+}
+
+int divisao(int a, int b){
+	return a / b;
+}
+
+int resto(int a, int b){
+	return a % b;
+}
+
+void programaNRD(){
+	int a;
+	int b;
+	int valorSoma;
+	int valorSub;
+	int valorMult;
+	int valorDiv;
+	int valorResto;
+	
+	print("Digite  primeiro valor: ");
+	read(a);
+	print("\n");
+	
+	print("Digite  segundo valor: ");
+	read(b);
+	print("\n");
+	
+	valorSoma = soma(a, b);
+	valorSub = sub(a, b);
+	valorMult = mult(a, b);
+	valorDiv = divisao(a, b);
+	valorResto = resto(a, b);
+	
+	print("Soma: ");print(valorSoma);print("\n");
+	print("Subtração: ");print(valorSub);print("\n");
+	print("Multiplicação: ");print(valorMult);print("\n");
+	print("Divisão: ");print(valorDiv);print("\n");
+	print("Resto: ");print(valorResto);print("\n");
+
+}
+
+int programaRA(int numero,int x, int y)#numero -> posição até onde vai calcular / x -> 1 / y -> 0
+{
+  if(numero == 0) {
+    return 0;
+  }
+  if(numero > 1) {
+	numero = numero - 1;
+	int z = x + y;
+    return y + programaRA(numero, y, z);
+  }
+  else {
+    return 1;
+  }
+}
+
+int programaRB(int n)
+{
+	if (n > 0) {
+		int m = n - 1;
+		return n * programaRB(m);
+  	}
+	else { return 1; }
+}
+
+int main() {
+	print("Testando programa 2.A\n");
+	programaNRA();
+	
+	print("Testando programa 2.B");print("\n");
+	print("Digite um número (vetor): ");
+	int a;
+	read(a);
+	int resultado1 = programaNRB(a);
+	if(resultado1 == 1){
+		print("Valor foi achado.");print("\n");
+	}else{
+		print("Valor não foi achado");print("\n");
+	}
+	
+	print("Testando programa 2.C");print("\n");
+	programaNRC();
+	
+	print("Testando programa 2.D");print("\n");
+	programaNRD();
+	
+	print("Testando programa 3.A");print("\n");
+	print("Digite um número para calcular fibonacci: ");
+	int b;
+	read(b);
+	int fib1 = 1;
+	int fib2 = 0;
+	int testeFib = programaRA(b, fib1, fib2);
+	print(testeFib);print("\n");
+	
+	print("Testando programa 3.B");print("\n");
+	print("Digite um número para receber seu fatorial: ");
+	int c;
+	read(c);
+	int testeFat = programaRB(c);
+	print(testeFat);print("\n");
+	
+	return 0;
+}
+
